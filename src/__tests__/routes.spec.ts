@@ -116,11 +116,16 @@ describe("[GET] /users", () => {
     const response = await request(app).get("/users").set("user_id", user1.id);
 
     expect(
-      response.body.map((res) => ({
-        ...res,
-        created_at: new Date(res.created_at),
-        updated_at: new Date(res.updated_at),
-      }))
+      response.body.map(
+        (res: {
+          created_at: string | number | Date;
+          updated_at: string | number | Date;
+        }) => ({
+          ...res,
+          created_at: new Date(res.created_at),
+          updated_at: new Date(res.updated_at),
+        })
+      )
     ).toEqual(
       expect.arrayContaining([
         expect.objectContaining({ ...user1, admin: true }),
