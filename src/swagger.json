@@ -11,7 +11,7 @@
   "paths": {
     "/users": {
       "post": {
-        "tags": ["Create Users"],
+        "tags": ["User"],
         "summary": "Create Create User",
         "description": "Create a new User",
         "requestBody": {
@@ -78,21 +78,21 @@
         }
       },
       "get": {
-        "tags": ["Get list users"],
+        "tags": ["User"],
         "summary": "List all users from list",
         "Description": "Request users from list all, or one from id",
-        "parameters:": [
+        "parameters": [
           {
-          "in": "header",
-          "name": "id",
-          "required": true,
-          "description": "The user id",
-          "schema": {
-            "type": "string",
-            "format": "uuid"
+            "name": "id",
+            "in": "headers",
+            "description": "ID do usuário",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
           }
-        }
-      ],
+        ],
         "responses": {
           "200": {
             "description": "Success",
@@ -138,21 +138,21 @@
     },
     "/users/{id}": {
       "get": {
-        "tags": ["Get profile user (one user)"],
+        "tags": ["User"],
         "summary": "List from this user in request",
         "description": "Request one user from id em params",
-        "parameters:": [
+        "parameters": [
           {
-          "in": "path",
-          "name": "id",
-          "required": true,
-          "description": "The user id",
-          "schema": {
-            "type": "string",
-            "format": "uuid"
+            "name": "id",
+            "in": "path",
+            "description": "ID do usuário",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
           }
-        }
-      ],
+        ],
         "responses": {
           "200": {
             "description": "Success",
@@ -201,21 +201,21 @@
     },
     "/users/{id}/admin": {
       "patch": {
-        "tags": ["Activate admin from profile user (one user)"],
+        "tags": ["User"],
         "summary": "Activate admin from profile user (one user)",
         "description": "Activate admin from profile user (one user)",
-        "parameters:": [
+        "parameters": [
           {
-          "in": "path",
-          "name": "id",
-          "required": true,
-          "description": "The user id",
-          "schema": {
-            "type": "string",
-            "format": "uuid"
+            "name": "id",
+            "in": "path",
+            "description": "ID do usuário",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
           }
-        }
-      ],
+        ],
         "responses": {
           "200": {
             "description": "Success",
